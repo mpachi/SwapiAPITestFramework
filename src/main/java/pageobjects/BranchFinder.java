@@ -1,6 +1,8 @@
 package pageobjects;
 
 import AbstractComponent.AbstractComponent;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -27,10 +29,8 @@ public class BranchFinder extends AbstractComponent {
     @FindBy(className = "ResultSummary")
     WebElement resultSummary;
 
-    @FindBy(css = "li.c-Autocomplete-item")
-    WebElement postCodeSuggestion;
     String basePath = System.getProperty("user.dir") + "/src/test/java";
-
+    private static Logger logger= LogManager.getLogger();
     public BranchFinder(WebDriver driver) {
         super(driver);
         this.driver = driver;
@@ -51,6 +51,10 @@ public class BranchFinder extends AbstractComponent {
         searchPostCodeButton.click();
         waitForWebElementToAppear(resultSummary);
     }
+    public void verifyResultSummary() throws Exception {
+        waitForWebElementToAppear(resultSummary);
+    }
+
 
     public void selectBranch(String link,String branchIndex) throws InterruptedException {
         WebElement branch = null;
@@ -66,6 +70,7 @@ public class BranchFinder extends AbstractComponent {
     public void logBranchPhoneNumber(String branch){
         waitForWebElementToAppear(branchPhone);
         System.out.println("Branch Phone number: "+branchPhone.getText());
+        logger.info("Branch Phone No. "+branchPhone.getText());
         driver.close();
     }
 

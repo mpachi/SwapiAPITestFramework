@@ -23,25 +23,25 @@ public class BranchFinderStepDef extends BaseTest {
         branchFinder = homePage.clickOnBranchFinder();
     }
 
-    @When("user enters {string} postcode")
-    public void user_enters_postcode(String area) throws Exception {
+    @When("user enters {string} postcode and click search")
+    public void user_enters_postcode_and_click_search(String area) throws Exception {
         branchFinder.InputPostCodeAndSearch(area);
     }
 
 
     @Then("all nearest branches should be displayed")
-    public void all_nearest_branches_should_be_displayed() {
-
+    public void all_nearest_branches_should_be_displayed() throws Exception {
+       branchFinder.verifyResultSummary();
     }
 
     @When("user clicks on {string} of {string} branch")
     public void user_clicks_on_of_branch(String link, String branchIndex) throws InterruptedException {
-        branchFinder.selectBranch(link,branchIndex);
+        branchFinder.selectBranch(link, branchIndex);
     }
 
     @Then("user is taken to {string} branch's page")
     public void user_is_taken_to_branch_s_page(String branch) {
-    branchFinder.logBranchPhoneNumber(branch);
+        branchFinder.logBranchPhoneNumber(branch);
     }
 
 }

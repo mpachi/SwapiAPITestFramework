@@ -7,14 +7,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import pageobjects.HomePage;
 
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Properties;
 
 public class BaseTest extends Utils {
     public WebDriver driver;
     public HomePage homePage;
-
     public WebDriver initializeDriver() throws IOException {
 
         String browserName = System.getProperty("browser")!=null ? System.getProperty("browser") :getGlobalValue("browser");

@@ -6,7 +6,9 @@ All external dependencies are managed by the build tool- Maven using pom.xml
 
 Cucumber wrapper has been used to write tests in Gherkin style for Behavior Driver Development(BDD).
 
-For Task2, the postcodes are stored in an external JSON file and fed to tests using Scenario Outline
+For Task2, the postcodes are stored in an external JSON file and fed to tests using Scenario Outline.
+For logging, log4j2 library has been used and all logs are appended to both console and an external log file named 
+Mylogs.log which can be found under root directory.
 
 # PreRequisite
 Java and Maven must be installed on the machine
